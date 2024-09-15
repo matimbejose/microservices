@@ -1,2 +1,10 @@
-package com.matimbe.ecommerce.kafka.payment;public enum PaymentMethod {
+package com.matimbe.ecommerce.kafka.payment;
+
+public enum PaymentMethod {
+
+    PAYPAL,
+    CREDIT_CARD,
+    VISA,
+    MASTER_CARD,
+    BITCOIN
 }

@@ -7,6 +7,8 @@ import com.matimbe.ecommerce.kafka.OrderConfirmation;
 import com.matimbe.ecommerce.kafka.OrderProducer;
 import com.matimbe.ecommerce.orderline.OrderLineRequest;
 import com.matimbe.ecommerce.orderline.OrderLineService;
+import com.matimbe.ecommerce.payment.PaymentClient;
+import com.matimbe.ecommerce.payment.PaymentRequest;
 import com.matimbe.ecommerce.product.ProductClient;
 import com.matimbe.ecommerce.product.PurchaseRequest;
 import jakarta.persistence.EntityNotFoundException;
@@ -28,6 +30,7 @@ public class OrderService {
     private final OrderMapper mapper;
     private OrderLineService orderLineService;
     private final OrderProducer orderProducer;
+    private final PaymentClient paymentClient;
 
     public Integer createOrder(OrderRequest request) {
         //check customer
@@ -55,6 +58,16 @@ public class OrderService {
         }
 
         //persist order list public
+
+        var paymentRequest = new PaymentRequest(
+                request.amount(),
+                request.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+        );
+
+        paymentClient.requestOrderPayment(paymentRequest);
 
         //todo start payment process
         orderProducer.sendOrderConfirmation(

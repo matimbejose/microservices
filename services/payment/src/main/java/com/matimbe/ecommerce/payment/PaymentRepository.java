@@ -1,2 +1,7 @@
-package com.matimbe.ecommerce.payment;public interface PaymentRepository {
+package com.matimbe.ecommerce.payment;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PaymentRepository extends JpaRepository<Payment, Integer> {
+
 }
