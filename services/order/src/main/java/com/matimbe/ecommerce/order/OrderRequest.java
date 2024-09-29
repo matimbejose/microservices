@@ -1,6 +1,6 @@
-package com.alibou.ecommerce.order;
+package com.matimbe.ecommerce.order;
 
-import com.alibou.ecommerce.product.PurchaseRequest;
+import com.matimbe.ecommerce.product.PurchaseRequest;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import jakarta.validation.constraints.NotBlank;

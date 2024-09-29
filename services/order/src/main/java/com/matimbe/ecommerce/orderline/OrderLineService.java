@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.orderline;
+package com.matimbe.ecommerce.orderline;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

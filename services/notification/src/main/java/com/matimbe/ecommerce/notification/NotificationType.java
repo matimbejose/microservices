@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.notification;
+package com.matimbe.ecommerce.notification;
 
 public enum NotificationType {
     ORDER_CONFIRMATION,

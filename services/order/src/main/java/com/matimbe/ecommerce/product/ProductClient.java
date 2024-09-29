@@ -1,6 +1,6 @@
-package com.alibou.ecommerce.product;
+package com.matimbe.ecommerce.product;
 
-import com.alibou.ecommerce.exception.BusinessException;
+import com.matimbe.ecommerce.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;

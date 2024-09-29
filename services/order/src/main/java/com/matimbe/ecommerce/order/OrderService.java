@@ -1,15 +1,15 @@
-package com.alibou.ecommerce.order;
+package com.matimbe.ecommerce.order;
 
-import com.alibou.ecommerce.kafka.OrderConfirmation;
-import com.alibou.ecommerce.customer.CustomerClient;
-import com.alibou.ecommerce.exception.BusinessException;
-import com.alibou.ecommerce.kafka.OrderProducer;
-import com.alibou.ecommerce.orderline.OrderLineRequest;
-import com.alibou.ecommerce.orderline.OrderLineService;
-import com.alibou.ecommerce.payment.PaymentClient;
-import com.alibou.ecommerce.payment.PaymentRequest;
-import com.alibou.ecommerce.product.ProductClient;
-import com.alibou.ecommerce.product.PurchaseRequest;
+import com.matimbe.ecommerce.kafka.OrderConfirmation;
+import com.matimbe.ecommerce.customer.CustomerClient;
+import com.matimbe.ecommerce.exception.BusinessException;
+import com.matimbe.ecommerce.kafka.OrderProducer;
+import com.matimbe.ecommerce.orderline.OrderLineRequest;
+import com.matimbe.ecommerce.orderline.OrderLineService;
+import com.matimbe.ecommerce.payment.PaymentClient;
+import com.matimbe.ecommerce.payment.PaymentRequest;
+import com.matimbe.ecommerce.product.ProductClient;
+import com.matimbe.ecommerce.product.PurchaseRequest;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

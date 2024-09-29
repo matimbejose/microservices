@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.email;
+package com.matimbe.ecommerce.email;
 
 import lombok.Getter;
 

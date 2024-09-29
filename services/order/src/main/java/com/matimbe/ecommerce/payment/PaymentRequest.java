@@ -1,7 +1,7 @@
-package com.alibou.ecommerce.payment;
+package com.matimbe.ecommerce.payment;
 
-import com.alibou.ecommerce.customer.CustomerResponse;
-import com.alibou.ecommerce.order.PaymentMethod;
+import com.matimbe.ecommerce.customer.CustomerResponse;
+import com.matimbe.ecommerce.order.PaymentMethod;
 
 import java.math.BigDecimal;
 

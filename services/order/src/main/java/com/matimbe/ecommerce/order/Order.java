@@ -1,6 +1,6 @@
-package com.alibou.ecommerce.order;
+package com.matimbe.ecommerce.order;
 
-import com.alibou.ecommerce.orderline.OrderLine;
+import com.matimbe.ecommerce.orderline.OrderLine;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;

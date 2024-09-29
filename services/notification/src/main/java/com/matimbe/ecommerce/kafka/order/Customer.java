@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.kafka.order;
+package com.matimbe.ecommerce.kafka.order;
 
 public record Customer(
     String id,

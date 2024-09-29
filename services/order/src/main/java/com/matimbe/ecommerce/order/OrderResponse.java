@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.order;
+package com.matimbe.ecommerce.order;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

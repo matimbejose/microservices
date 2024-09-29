@@ -1,3 +1,5 @@
+server:
+  port: 8070
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -17,13 +19,8 @@ spring:
       properties:
         spring.json.type.mapping: orderConfirmation:com.matimbe.ecommerce.kafka.OrderConfirmation
 
-server:
-  port: 8070
-
 application:
   config:
-    costumer-url: http://localhost:8222/api/v1/customers
+    customer-url: http://localhost:8222/api/v1/customers
     payment-url: http://localhost:8222/api/v1/payments
-    product-url: http://localhost:8222/api/v1/product
-
-
+    product-url: http://localhost:8222/api/v1/products

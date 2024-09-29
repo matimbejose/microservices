@@ -1,8 +1,8 @@
-package com.alibou.ecommerce.kafka;
+package com.matimbe.ecommerce.kafka;
 
-import com.alibou.ecommerce.customer.CustomerResponse;
-import com.alibou.ecommerce.order.PaymentMethod;
-import com.alibou.ecommerce.product.PurchaseResponse;
+import com.matimbe.ecommerce.customer.CustomerResponse;
+import com.matimbe.ecommerce.order.PaymentMethod;
+import com.matimbe.ecommerce.product.PurchaseResponse;
 
 import java.math.BigDecimal;
 import java.util.List;

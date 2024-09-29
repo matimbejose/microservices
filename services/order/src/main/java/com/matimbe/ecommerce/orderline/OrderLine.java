@@ -1,7 +1,7 @@
-package com.alibou.ecommerce.orderline;
+package com.matimbe.ecommerce.orderline;
 
 
-import com.alibou.ecommerce.order.Order;
+import com.matimbe.ecommerce.order.Order;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

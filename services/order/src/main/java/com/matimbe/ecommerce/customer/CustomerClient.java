@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.customer;
+package com.matimbe.ecommerce.customer;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

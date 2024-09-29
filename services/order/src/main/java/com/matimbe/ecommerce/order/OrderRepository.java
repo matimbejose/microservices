@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.order;
+package com.matimbe.ecommerce.order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

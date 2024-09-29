@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.orderline;
+package com.matimbe.ecommerce.orderline;
 
 public record OrderLineRequest(
         Integer id,

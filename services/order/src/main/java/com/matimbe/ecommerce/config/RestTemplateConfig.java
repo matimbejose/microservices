@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.config;
+package com.matimbe.ecommerce.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

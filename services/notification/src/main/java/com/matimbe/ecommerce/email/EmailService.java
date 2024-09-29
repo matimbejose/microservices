@@ -17,8 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.alibou.ecommerce.email.EmailTemplates.ORDER_CONFIRMATION;
-import static com.alibou.ecommerce.email.EmailTemplates.PAYMENT_CONFIRMATION;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Service
@@ -41,7 +39,7 @@ public class EmailService {
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, UTF_8.name());
         messageHelper.setFrom("contact@aliboucoding.com");
 
-        final String templateName = PAYMENT_CONFIRMATION.getTemplate();
+        final String templateName = EmailTemplates.PAYMENT_CONFIRMATION.getTemplate();
 
         Map<String, Object> variables = new HashMap<>();
         variables.put("customerName", customerName);
@@ -50,7 +48,7 @@ public class EmailService {
 
         Context context = new Context();
         context.setVariables(variables);
-        messageHelper.setSubject(PAYMENT_CONFIRMATION.getSubject());
+        messageHelper.setSubject(EmailTemplates.PAYMENT_CONFIRMATION.getSubject());
 
         try {
             String htmlTemplate = templateEngine.process(templateName, context);
@@ -78,7 +76,7 @@ public class EmailService {
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, UTF_8.name());
         messageHelper.setFrom("contact@aliboucoding.com");
 
-        final String templateName = ORDER_CONFIRMATION.getTemplate();
+        final String templateName = EmailTemplates.ORDER_CONFIRMATION.getTemplate();
 
         Map<String, Object> variables = new HashMap<>();
         variables.put("customerName", customerName);
@@ -88,7 +86,7 @@ public class EmailService {
 
         Context context = new Context();
         context.setVariables(variables);
-        messageHelper.setSubject(ORDER_CONFIRMATION.getSubject());
+        messageHelper.setSubject(EmailTemplates.ORDER_CONFIRMATION.getSubject());
 
         try {
             String htmlTemplate = templateEngine.process(templateName, context);

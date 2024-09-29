@@ -1,4 +1,4 @@
-package com.alibou.ecommerce.payment;
+package com.matimbe.ecommerce.payment;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,10 +1,9 @@
-package com.alibou.ecommerce.notification;
+package com.matimbe.ecommerce.notification;
 
-import com.alibou.ecommerce.kafka.order.OrderConfirmation;
-import com.alibou.ecommerce.kafka.payment.PaymentConfirmation;
+import com.matimbe.ecommerce.kafka.order.OrderConfirmation;
+import com.matimbe.ecommerce.kafka.payment.PaymentConfirmation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
