@@ -1,10 +1,10 @@
-package com.matimbe.ecommerce.kafka.order;
+package com.alibou.ecommerce.kafka.order;
 
 public record Customer(
-        String first_name,
-        String last_name,
-        String email
+    String id,
+    String firstname,
+    String lastname,
+    String email
 ) {
-
 
 }

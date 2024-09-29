@@ -1,33 +1,33 @@
-package com.matimbe.ecommerce.customer;
+package com.alibou.ecommerce.customer;
 
+import org.springframework.stereotype.Component;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-
-@Service
-@RequiredArgsConstructor
+@Component
 public class CustomerMapper {
 
-
-    public Customer toCustomer(CustomerRequest request) {
-        if(request == null) return null;
-        return Customer.builder()
-                .id(request.id())
-                .first_name(request.first_name())
-                .last_name(request.last_name())
-                .email(request.email())
-                .address(request.address())
-                .build();
+  public Customer toCustomer(CustomerRequest request) {
+    if (request == null) {
+      return null;
     }
+    return Customer.builder()
+        .id(request.id())
+        .firstname(request.firstname())
+        .lastname(request.lastname())
+        .email(request.email())
+        .address(request.address())
+        .build();
+  }
 
-    public CustomerResponse fromCustomer(Customer customer) {
-        return  new CustomerResponse(
-                customer.getId(),
-                customer.getFirst_name(),
-                customer.getLast_name(),
-                customer.getEmail(),
-                customer.getAddress()
-        );
+  public CustomerResponse fromCustomer(Customer customer) {
+    if (customer == null) {
+      return null;
     }
+    return new CustomerResponse(
+        customer.getId(),
+        customer.getFirstname(),
+        customer.getLastname(),
+        customer.getEmail(),
+        customer.getAddress()
+    );
+  }
 }

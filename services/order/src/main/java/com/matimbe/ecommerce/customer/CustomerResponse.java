@@ -1,9 +1,10 @@
-package com.matimbe.ecommerce.customer;
+package com.alibou.ecommerce.customer;
 
 public record CustomerResponse(
-         String id,
-         String first_name,
-         String last_name,
-         String email
+    String id,
+    String firstname,
+    String lastname,
+    String email
 ) {
+
 }

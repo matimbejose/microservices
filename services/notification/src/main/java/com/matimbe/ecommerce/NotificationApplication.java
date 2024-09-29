@@ -1,11 +1,10 @@
-package com.matimbe.ecommerce;
+package com.alibou.ecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableAsync;
 
+@EnableEurekaServer
 @SpringBootApplication
-@EnableAsync
 public class NotificationApplication {
 
 	public static void main(String[] args) {

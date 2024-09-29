@@ -1,10 +1,6 @@
-package com.matimbe.ecommerce.kafka.payment;
-
-
-import com.matimbe.ecommerce.kafka.order.Customer;
+package com.alibou.ecommerce.kafka.payment;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public record PaymentConfirmation(
         String orderReference,
@@ -14,5 +10,4 @@ public record PaymentConfirmation(
         String customerLastname,
         String customerEmail
 ) {
-
 }

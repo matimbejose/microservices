@@ -1,4 +1,4 @@
-package com.matimbe.ecommerce.product;
+package com.alibou.ecommerce.product;
 
 import java.math.BigDecimal;
 

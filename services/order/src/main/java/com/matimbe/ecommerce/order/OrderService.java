@@ -1,19 +1,19 @@
-package com.matimbe.ecommerce.order;
+package com.alibou.ecommerce.order;
 
-
-import com.matimbe.ecommerce.customer.CustomerClient;
-import com.matimbe.ecommerce.exception.BusinessException;
-import com.matimbe.ecommerce.kafka.OrderConfirmation;
-import com.matimbe.ecommerce.kafka.OrderProducer;
-import com.matimbe.ecommerce.orderline.OrderLineRequest;
-import com.matimbe.ecommerce.orderline.OrderLineService;
-import com.matimbe.ecommerce.payment.PaymentClient;
-import com.matimbe.ecommerce.payment.PaymentRequest;
-import com.matimbe.ecommerce.product.ProductClient;
-import com.matimbe.ecommerce.product.PurchaseRequest;
+import com.alibou.ecommerce.kafka.OrderConfirmation;
+import com.alibou.ecommerce.customer.CustomerClient;
+import com.alibou.ecommerce.exception.BusinessException;
+import com.alibou.ecommerce.kafka.OrderProducer;
+import com.alibou.ecommerce.orderline.OrderLineRequest;
+import com.alibou.ecommerce.orderline.OrderLineService;
+import com.alibou.ecommerce.payment.PaymentClient;
+import com.alibou.ecommerce.payment.PaymentRequest;
+import com.alibou.ecommerce.product.ProductClient;
+import com.alibou.ecommerce.product.PurchaseRequest;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,30 +22,24 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderService {
 
-
-
     private final OrderRepository repository;
-    private final CustomerClient customerClient;
-    private final ProductClient productClient;
     private final OrderMapper mapper;
-    private OrderLineService orderLineService;
-    private final OrderProducer orderProducer;
+    private final CustomerClient customerClient;
     private final PaymentClient paymentClient;
+    private final ProductClient productClient;
+    private final OrderLineService orderLineService;
+    private final OrderProducer orderProducer;
 
+    @Transactional
     public Integer createOrder(OrderRequest request) {
-        //check customer
         var customer = this.customerClient.findCustomerById(request.customerId())
-                .orElseThrow(() ->new BusinessException("Cannot create order:: No customer found"));
+                .orElseThrow(() -> new BusinessException("Cannot create order:: No customer exists with the provided ID"));
 
-
-
-        //purchase the products --> product-ms
-       var  purchasedProducts =  this.productClient.purchaseProducts(request.products());
+        var purchasedProducts = productClient.purchaseProducts(request.products());
 
         var order = this.repository.save(mapper.toOrder(request));
 
-        //persist  order
-        for(PurchaseRequest purchaseRequest: request.products()) {
+        for (PurchaseRequest purchaseRequest : request.products()) {
             orderLineService.saveOrderLine(
                     new OrderLineRequest(
                             null,
@@ -54,11 +48,7 @@ public class OrderService {
                             purchaseRequest.quantity()
                     )
             );
-
         }
-
-        //persist order list public
-
         var paymentRequest = new PaymentRequest(
                 request.amount(),
                 request.paymentMethod(),
@@ -66,13 +56,11 @@ public class OrderService {
                 order.getReference(),
                 customer
         );
-
         paymentClient.requestOrderPayment(paymentRequest);
 
-        //todo start payment process
         orderProducer.sendOrderConfirmation(
                 new OrderConfirmation(
-                        request.references(),
+                        request.reference(),
                         request.amount(),
                         request.paymentMethod(),
                         customer,
@@ -80,21 +68,19 @@ public class OrderService {
                 )
         );
 
-        //send the order confirmation   -->notification-ms (kafka)
         return order.getId();
     }
 
-    public List<OrderResponse> findAll() {
-
-        return  repository.findAll()
+    public List<OrderResponse> findAllOrders() {
+        return this.repository.findAll()
                 .stream()
-                .map(mapper::fromOrder)
+                .map(this.mapper::fromOrder)
                 .collect(Collectors.toList());
     }
 
-    public OrderResponse findById(Integer orderId) {
-        return   repository.findById(orderId)
-                .map(mapper::fromOrder)
-                .orElseThrow(() ->new EntityNotFoundException(String.format("Cannot find order:: No order found")));
+    public OrderResponse findById(Integer id) {
+        return this.repository.findById(id)
+                .map(this.mapper::fromOrder)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("No order found with the provided ID: %d", id)));
     }
 }

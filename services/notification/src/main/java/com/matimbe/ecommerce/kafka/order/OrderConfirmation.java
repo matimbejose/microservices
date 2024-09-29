@@ -1,7 +1,6 @@
-package com.matimbe.ecommerce.kafka.order;
+package com.alibou.ecommerce.kafka.order;
 
-import com.matimbe.ecommerce.kafka.payment.PaymentMethod;
-import com.matimbe.ecommerce.kafka.payment.Product;
+import com.alibou.ecommerce.kafka.payment.PaymentMethod;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,5 +11,6 @@ public record OrderConfirmation(
         PaymentMethod paymentMethod,
         Customer customer,
         List<Product> products
+
 ) {
 }

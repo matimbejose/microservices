@@ -1,25 +1,34 @@
-package com.matimbe.ecommerce.orderline;
+package com.alibou.ecommerce.orderline;
 
 
-import com.matimbe.ecommerce.order.Order;
-import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.alibou.ecommerce.order.Order;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Getter
 @Setter
 @Entity
-
+@NoArgsConstructor
+@Table(name = "customer_line")
 public class OrderLine {
+
     @Id
-    @Generated
+    @GeneratedValue
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
-    private Integer quantity;
-    private double productId;
+    private Integer productId;
+    private double quantity;
 }
